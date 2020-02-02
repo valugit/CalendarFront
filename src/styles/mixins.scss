@@ -1,0 +1,15 @@
+@mixin flex($d: row, $j: center, $a: center) {
+	display: flex;
+	flex-direction: $d;
+	justify-content: $j;
+	align-items: $a;
+}
+
+@mixin pad($t: 0, $r: $t, $b: $t, $l: $r) {
+	padding: {
+		top: $t;
+		right: $r;
+		bottom: $b;
+		left: $l;
+	}
+}

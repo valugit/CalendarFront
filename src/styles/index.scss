@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import './colors.scss';
+@import './mixins.scss';
+
+* {
+	background: none;
+	margin: 0;
+	border: none;
+	padding: 0;
+	color: #fff;
+	text-decoration: none;
+	list-style: none;
+	font-family: 'Roboto', 'Sogoe UI Symbol', 'Arial Unicode MS', sans-serif;
+	-ms-overflow-style: none; // IE 10+
+	scrollbar-width: none;
+	overflow: -moz-scrollbars-none;
+
+	&::-webkit-scrollbar {
+		display: none;
+		width: 0;
+		background: transparent;
+	}
+}
+
+#root {
+	position: relative;
+	overflow-x: hidden;
+	box-sizing: border-box;
+	@include pad(0, 10%);
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: $black;
+	font-size: 16px;
+
+	h1,
+	h2,
+	h3,
+	p,
+	li {
+		cursor: default;
+	}
+}
+
+#error {
+	@include flex(column);
+	height: 100vh;
+	width: 100%;
+
+	h1 {
+		font-size: 8em;
+		text-align: center;
+	}
+
+	p {
+		font-size: 1.2em;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+}
+
+.b-black {
+	background-color: $black;
+}
+
+.b-bleen {
+	background-color: $bleen;
+}
+
+.b-white {
+	background-color: #fff;
+}
+
+.c-black {
+	color: $black;
+}
+
+.c-bleen {
+	color: $bleen;
+}
+
+.c-grey {
+	color: $grey;
+}
+
+img,
+.non-clickable {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+	pointer-events: none;
+}
+
+.MuiButtonBase-root.scroll-to-top {
+	position: fixed;
+	@include pad(10px);
+	bottom: 2%;
+	right: 2%;
+	background-color: $bleen;
+	transition: 0.3s;
+
+	&:hover {
+		background-color: rgba($color: $bleen, $alpha: 0.7);
+		transition: 0.3s;
+	}
+
+	svg {
+		font-size: 1.75em;
+		transform: rotate(90deg);
+	}
+}
