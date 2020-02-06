@@ -3,20 +3,17 @@ import { Provider } from "react-redux";
 import { Route, Switch } from "react-router";
 import { ConnectedRouter } from 'connected-react-router';
 import configureStore, { history } from './store';
+import PrivateRoute from './helpers/PrivateRouter';
 import {
     Home,
+    Login,
+    Register,
     NotFound
 } from './routes';
 import ErrorBoundary from "./helpers/ErrorBoundary";
-import { setConfig } from 'react-hot-loader';
 import { hot } from "react-hot-loader/root";
 import { getEnv } from '@babel/core/lib/config/helpers/environment';
 import ScrollToTop from "./ScrollToTop";
-
-if (getEnv() === 'production')
-    setConfig({
-        reloadHooks: false
-    });
 
 const store = configureStore();
 
@@ -25,7 +22,9 @@ const Router = () => <Provider store={ store }>
         <ErrorBoundary>
             <ScrollToTop />
             <Switch>
-                <Route exact path={ '/' } render={ Home } />
+                <Route exact path={ '/login' } render={ Login } />
+                <Route exact path={ '/register' } render={ Register } />
+                <PrivateRoute path={ '/' } component={ Home } />
                 <Route component={ NotFound } />
             </Switch>
         </ErrorBoundary>

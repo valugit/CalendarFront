@@ -1,0 +1,64 @@
+@import './../colors.scss';
+@import './../mixins.scss';
+
+.GMCalendar {
+	width: 800px;
+
+	.popup {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba($color: #000000, $alpha: 0.5);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 999;
+
+		& > div {
+			position: relative;
+			width: 500px;
+			background-color: $black;
+			border: 1px solid $bleen;
+			border-radius: 15px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			@include pad(10px);
+		}
+
+		.close {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+		}
+
+		.action {
+			align-self: flex-end;
+
+			&.delete:not(:hover) {
+				background-color: red;
+			}
+		}
+
+		.info {
+			width: 100%;
+			margin: {
+				top: 10px;
+				bottom: 10px;
+			}
+			display: flex;
+			flex-direction: column;
+
+			& > div {
+				display: flex;
+
+				span:first-of-type {
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+}

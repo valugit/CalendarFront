@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
 @import './colors.scss';
 @import './mixins.scss';
 
@@ -38,6 +40,12 @@
 	p,
 	li {
 		cursor: default;
+	}
+
+	main {
+		display: flex;
+		justify-content: center;
+		min-height: 84vh;
 	}
 }
 
@@ -80,6 +88,14 @@
 
 .c-grey {
 	color: $grey;
+}
+
+.loader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
 }
 
 img,

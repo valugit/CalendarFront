@@ -1,0 +1,74 @@
+@import './../colors.scss';
+@import './../mixins.scss';
+
+.auth {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+
+	h1 {
+		color: $bleen;
+		margin-bottom: 30px;
+	}
+
+	.message {
+		margin-bottom: 10px;
+	}
+
+	.keep-login {
+		align-self: flex-start;
+
+		svg {
+			margin-right: 8px;
+		}
+	}
+
+	& > div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid $bleen;
+		border-radius: 10px;
+		@include pad(50px);
+		width: 350px;
+
+		& > div {
+			width: 100%;
+		}
+	}
+
+	.confirm-form {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.connect {
+			width: 100%;
+			margin-bottom: 100px;
+		}
+
+		.error-message {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			top: 75px;
+			color: red;
+		}
+	}
+
+	.change-auth {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		& > button {
+			font-size: inherit;
+			margin-left: 1em;
+		}
+	}
+}

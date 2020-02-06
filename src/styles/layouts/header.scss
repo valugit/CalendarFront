@@ -1,0 +1,23 @@
+@import './../colors.scss';
+@import './../mixins.scss';
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 8vh;
+
+	h1 {
+		color: $bleen;
+	}
+
+	div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	div > *:not(:last-child) {
+		margin-right: 1em;
+	}
+}

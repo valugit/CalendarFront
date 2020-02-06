@@ -1,0 +1,96 @@
+@import './../colors.scss';
+@import './../mixins.scss';
+
+.auth {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+
+	h1 {
+		color: $bleen;
+		margin-bottom: 30px;
+	}
+
+	.message {
+		margin-bottom: 10px;
+	}
+
+	.role-label {
+		align-self: flex-start;
+		margin-top: 15px;
+	}
+	.role {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: {
+			top: 15px;
+			bottom: 15px;
+		}
+
+		button:first-child svg {
+			margin-right: 8px;
+		}
+
+		button:last-child svg {
+			margin-left: 8px;
+		}
+	}
+
+	& > div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid $bleen;
+		border-radius: 10px;
+		@include pad(50px);
+		width: 350px;
+
+		& > div {
+			width: 100%;
+		}
+	}
+
+	.confirm-form {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.connect {
+			width: 100%;
+			margin-bottom: 100px;
+		}
+
+		.error-message {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			top: 75px;
+			color: red;
+		}
+
+		.success-message {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			top: 75px;
+			color: $bleen;
+		}
+	}
+
+	.change-auth {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		& > button {
+			font-size: inherit;
+			margin-left: 1em;
+		}
+	}
+}

@@ -1,15 +1,24 @@
 const initState = {
-  name: 'Grégoire'
+  isAuthenticated: false,
+  id: -1,
+  username: '',
+  email: '',
+  role: ''
 }
 
 export default (state = initState, action = {}) => {
   switch (action.type) {
-    case action.type === 'CHANGE_NAME':
+    case 'LOGIN':
       return {
         ...state,
-        name: action.name
-      }
-
+        isAuthenticated: true,
+        id: action.id,
+        username: action.username,
+        email: action.email,
+        role: action.role,
+      };
+    case 'LOGOUT':
+      return state;
     default:
       return state;
   }
