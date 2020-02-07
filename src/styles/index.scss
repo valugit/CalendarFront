@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
 @import './colors.scss';
 @import './mixins.scss';
 
@@ -45,6 +46,7 @@
 	main {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		min-height: 84vh;
 	}
 }

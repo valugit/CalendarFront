@@ -18,7 +18,7 @@ export default (state = initState, action = {}) => {
         role: action.role,
       };
     case 'LOGOUT':
-      return state;
+      return initState;
     default:
       return state;
   }

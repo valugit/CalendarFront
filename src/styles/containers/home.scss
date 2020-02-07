@@ -60,5 +60,65 @@
 				}
 			}
 		}
+
+		.new {
+			div {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+
+				label {
+					margin-left: 10px;
+				}
+
+				input {
+					width: 100%;
+				}
+			}
+
+			.select-game {
+				position: relative;
+				width: 100%;
+
+				& > button {
+					width: 100%;
+					border: 1px solid $bleen;
+					border-radius: 5px;
+					margin: 8px;
+					padding: 10px 12px;
+					font-size: 18px;
+					color: white;
+					justify-content: flex-start;
+				}
+
+				& > div {
+					position: absolute;
+					background-color: $black;
+					border-bottom-left-radius: 5px;
+					border-bottom-right-radius: 5px;
+					top: 80%;
+					left: 8px;
+					z-index: 1200;
+
+					& > button {
+						justify-content: flex-start;
+						padding: 8px;
+						border-left: 1px solid $bleen;
+						border-right: 1px solid $bleen;
+
+						&:last-of-type {
+							border-bottom: 1px solid $bleen;
+							border-bottom-left-radius: 5px;
+							border-bottom-right-radius: 5px;
+						}
+
+						&:hover {
+							color: white;
+							background-color: rgba($color: white, $alpha: 0.3);
+						}
+					}
+				}
+			}
+		}
 	}
 }
