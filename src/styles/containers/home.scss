@@ -3,6 +3,14 @@
 
 .GMCalendar {
 	width: 800px;
+	@include pad(0, 10%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	h2 {
+		margin-bottom: 15px;
+	}
 
 	.popup {
 		position: absolute;
@@ -62,6 +70,8 @@
 		}
 
 		.new {
+			align-self: flex-start;
+
 			div {
 				display: flex;
 				flex-direction: column;
@@ -120,5 +130,69 @@
 				}
 			}
 		}
+	}
+}
+
+.GMList {
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	@include pad(0, 10%);
+
+	.gameMaster {
+		display: flex;
+		padding: 20px;
+		border: 1px solid $bleen;
+		border-radius: 15px;
+		width: 100%;
+
+		&:not(:last-of-type) {
+			margin-bottom: 15px;
+		}
+	}
+
+	.GMInfos,
+	.GMCalendarPreview {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.GMInfos {
+		justify-content: flex-start;
+		align-items: flex-start;
+
+		& > div {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	.GMCalendarPreview {
+		justify-content: center;
+		align-items: center;
+	}
+
+	h2,
+	h3 {
+		margin: {
+			top: 5px;
+			bottom: 5px;
+		}
+	}
+
+	h2 {
+		display: flex;
+		align-items: flex-end;
+
+		svg {
+			font-size: 60px;
+			margin-right: 8px;
+		}
+	}
+
+	button {
+		margin-top: 20px;
 	}
 }

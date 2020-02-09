@@ -19,14 +19,14 @@ const Header = () => {
     <h1>RPG Calendar</h1>
     { user.role === 'player'
       ? <div>
-        <ButtonText onClick={ () => history.push('/') }>Home</ButtonText>
-        <ButtonText onClick={ () => null }>Booking</ButtonText>
+        <ButtonText onClick={ () => history.push('/') } disabled={ window.location.pathname === '/' }>Home</ButtonText>
+        <ButtonText onClick={ () => history.push('/booking') } disabled={ window.location.pathname === '/booking' }>Booking</ButtonText>
       </div>
       : null
     }
     <div>
       <p>Hello, { user.username }!</p>
-      <ButtonText onClick={ () => null }>Profile</ButtonText>
+      <ButtonText onClick={ () => null } disabled={ true }>Profile</ButtonText>
       <ButtonText onClick={ () => logout(dispatch) }>Logout</ButtonText>
     </div>
   </header>

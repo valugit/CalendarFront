@@ -6,6 +6,8 @@ import configureStore, { history } from './store';
 import PrivateRoute from './helpers/PrivateRouter';
 import {
     Home,
+    Booking,
+    GameMasterProfile,
     Login,
     Register,
     NotFound
@@ -24,7 +26,9 @@ const Router = () => <Provider store={ store }>
             <Switch>
                 <Route exact path={ '/login' } render={ Login } />
                 <Route exact path={ '/register' } render={ Register } />
-                <PrivateRoute path={ '/' } component={ Home } />
+                <PrivateRoute exact path={ '/' } component={ Home } />
+                <PrivateRoute exact path={ '/booking' } component={ Booking } />
+                <PrivateRoute path={ '/:id' } component={ GameMasterProfile } />
                 <Route component={ NotFound } />
             </Switch>
         </ErrorBoundary>

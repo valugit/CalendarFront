@@ -29,7 +29,6 @@
 	position: relative;
 	overflow-x: hidden;
 	box-sizing: border-box;
-	@include pad(0, 10%);
 	min-height: 100vh;
 	min-width: 100vw;
 	background-color: $black;

@@ -46,6 +46,9 @@ export const ButtonText = withStyles(theme => ({
         },
         '& .MuiTouchRipple-root': {
             display: 'none'
+        },
+        '&.Mui-disabled': {
+            color: '#818a9d50'
         }
     }
 }))(ButtonBase);

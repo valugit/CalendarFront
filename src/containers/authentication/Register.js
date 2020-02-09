@@ -187,12 +187,13 @@ const RegisterForm = () => {
         className={ 'connect' }
         style={ stateRequest === 'FAILURE' ? { backgroundColor: 'rgba(199,13,15,0.85)' } : null }
       >
-        { stateRequest === null ? "Create Account"
-          : stateRequest === "PROGRESS"
-            ? <CircularProgress />
-            : stateRequest === "SUCCESS"
-              ? <Check />
-              : <Cross />
+        {
+          stateRequest === null ? "Create Account"
+            : stateRequest === "PROGRESS"
+              ? <CircularProgress />
+              : stateRequest === "SUCCESS"
+                ? <Check />
+                : <Cross />
         }
       </ButtonPrimary>
       { stateRequest === 'FAILURE'

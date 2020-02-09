@@ -4,9 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from "@fullcalendar/interaction";
-import { ButtonPrimary } from '../../components/Button';
-import NewPopup from './popups/New';
-import EventPopup from './popups/Event';
+import EventInfoPopup from './popups/EventInfo';
 import { useSelector } from 'react-redux';
 import { api } from '../../helpers/api';
 
@@ -33,60 +31,47 @@ const createEvents = events => {
   return myEvents
 }
 
-const getEvents = (id, setEvents, setName) => {
-  api.get(`/gamemaster/${id}`, {
+const getEvents = setEvents => {
+  api.get('/user/reservation', {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }
   }).then(json => {
-    setName(json.data.username)
-    setEvents(createEvents(json.data.gm_seances))
+    console.log(json)
+    // setEvents(createEvents(json.data.gm_seances))
   }).catch(err => {
     console.log(err)
   })
 }
 
-const GMCalendar = props => {
+const PlayerCalendar = () => {
   const [events, setEvents] = useState([])
-  const [popup, setPopup] = useState({ type: null, info: null })
-  const [name, setName] = useState(null)
+  const [popup, setPopup] = useState({ active: false, info: null })
   const user = useSelector(state => state.user)
 
   useEffect(() => {
-    getEvents(props.id ? props.id : user.id, setEvents, setName)
+    getEvents(setEvents)
   }, []);
 
   return <>
-    { user.role === 'player' && name !== null ? <h2>{ name }'s schedule</h2> : null }
+    <h2>Your reservations:</h2>
     <FullCalendar
-      defaultView={ props.defaultView }
+      defaultView="dayGridMonth"
       events={ events }
       header={ {
         left: 'prev,next today',
         center: 'title',
-        right: props.views
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
       } }
       eventLimit={ true }
       plugins={ [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin] }
-      eventClick={ info => setPopup({ type: 'event', info: info }) }
+      eventClick={ info => setPopup({ active: true, info: info }) }
       dateClick={ arg => arg.view.calendar.changeView('timeGridDay', arg.date) }
     />
-    {
-      user.role === 'gamemaster'
-        ? <ButtonPrimary onClick={ () => setPopup({ type: 'new', info: null }) }>
-          Add Event
-        </ButtonPrimary>
-        : null
-    }
-    { props.interactive
-      ? popup.type === 'new'
-        ? <NewPopup setPopup={ setPopup } />
-        : popup.type === 'event'
-          ? <EventPopup info={ popup.info } setPopup={ setPopup } />
-          : null
-      : null
-    }
+    { popup.active
+      ? <EventPopup info={ popup.info } setPopup={ setPopup } />
+      : null }
   </>
 };
 
-export default GMCalendar;
+export default PlayerCalendar;

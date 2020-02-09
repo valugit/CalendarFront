@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import GMCalendar from './calendars/GMCalendar';
+import GMList from './GMList';
 import './../styles/containers/home.scss';
 
 const Main = () => {
@@ -12,9 +13,9 @@ const Main = () => {
     {
       user.role === 'gamemaster'
         ? <div className={ 'GMCalendar' }>
-          <GMCalendar />
+          <GMCalendar interactive={ true } defaultView={ "dayGridMonth" } views={ 'dayGridMonth,timeGridWeek,timeGridDay,listMonth' } />
         </div>
-        : null
+        : <GMList />
     }
   </main>
 }
