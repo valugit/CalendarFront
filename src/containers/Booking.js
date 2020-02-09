@@ -4,6 +4,7 @@ import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import PlayerCalendar from './calendars/PlayerCalendar';
 import NotFound from './utils/404';
+import './../styles/containers/profile.scss';
 
 const Booking = () => {
   const user = useSelector(state => state.user)
@@ -11,7 +12,7 @@ const Booking = () => {
   return user.role === 'player'
     ? <>
       <Header />
-      <main>
+      <main className={ 'reservations' }>
         <PlayerCalendar />
       </main>
       <Footer />

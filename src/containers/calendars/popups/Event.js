@@ -14,10 +14,29 @@ const deleteSeance = (id, setStateRequest) => {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }
-  }).then(json => {
+  }).then(() => {
     setStateRequest("SUCCESS")
     window.location.reload()
   }).catch(err => {
+    console.log(err)
+    setStateRequest("FAILURE")
+  })
+}
+
+const joinSeance = (id, setStateRequest) => {
+  console.log('maybe')
+  api.post(`/seance/join`, {
+    seance_id: id,
+  }, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    }
+  }).then(() => {
+    console.log('ok')
+    setStateRequest("SUCCESS")
+    window.location.reload()
+  }).catch(err => {
+    console.log('notok')
     console.log(err)
     setStateRequest("FAILURE")
   })
@@ -59,11 +78,23 @@ const EventPopup = ({ info, setPopup }) => {
       </div>
       {
         user.role === 'player'
-          ? <ButtonPrimary onClick={ () => info.event.extendedProps.players >= 8 ? console.log('ok') : null }
+          ? <ButtonPrimary
+            onClick={ () => info.event.extendedProps.players <= 8
+              ? joinSeance(info.event.id, setStateRequest)
+              : null }
             className={ 'action' }
+            disabled={ stateRequest === 'SUCCESS' || info.event.extendedProps.players >= 8 }
+            style={ stateRequest === 'FAILURE' ? { backgroundColor: 'rgba(199,13,15,0.85)' } : null }
           >
-            Join
-            </ButtonPrimary>
+            {
+              stateRequest === null ? "Join"
+                : stateRequest === "PROGRESS"
+                  ? <CircularProgress />
+                  : stateRequest === "SUCCESS"
+                    ? <Check />
+                    : <Cross />
+            }
+          </ButtonPrimary>
           : <ButtonPrimary onClick={ () => deleteSeance(info.event.id, setStateRequest) }
             className={ 'action delete' }
             disabled={ stateRequest === 'SUCCESS' }

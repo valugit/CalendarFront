@@ -20,10 +20,8 @@ const createEvents = events => {
       end: events[i].end,
       extendedProps: {
         description: events[i].description,
-        game: events[i].seance_game.name,
         players: events[i].players.length
-      },
-      backgroundColor: events[i].seance_game.color
+      }
     })
     i++
   }
@@ -32,13 +30,13 @@ const createEvents = events => {
 }
 
 const getEvents = setEvents => {
-  api.get('/user/reservation', {
+  api.get('/user/reservations', {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     }
   }).then(json => {
     console.log(json)
-    // setEvents(createEvents(json.data.gm_seances))
+    setEvents(createEvents(json.data.seance_joined))
   }).catch(err => {
     console.log(err)
   })
@@ -69,7 +67,7 @@ const PlayerCalendar = () => {
       dateClick={ arg => arg.view.calendar.changeView('timeGridDay', arg.date) }
     />
     { popup.active
-      ? <EventPopup info={ popup.info } setPopup={ setPopup } />
+      ? <EventInfoPopup info={ popup.info } setPopup={ setPopup } />
       : null }
   </>
 };
